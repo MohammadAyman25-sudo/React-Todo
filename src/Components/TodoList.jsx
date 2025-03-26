@@ -2,9 +2,9 @@ import Task from './Task';
 import { useState } from 'react';
 
 function TodoList(props) {
+    const [myState, setMyState] = useState(false);
     let tasks = JSON.parse(localStorage.getItem('tasks'));
     let unfinished_tasks = tasks.filter((task)=>{return !task.completed;});
-    const [myState, setMyState] = useState(false);
   return (
     <>
       <table className="table container">
