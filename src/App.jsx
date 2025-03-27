@@ -14,6 +14,9 @@ import 'bootstrap-icons/font/bootstrap-icons.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
+  if (localStorage.getItem('tasks') == null) {
+    localStorage.setItem('tasks', JSON.stringify([]));
+  }
   const handleDelete = (e)=>{
     let el = e.target;
     let tasks = JSON.parse(localStorage.getItem('tasks'));
