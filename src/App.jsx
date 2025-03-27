@@ -43,24 +43,24 @@ function App() {
         <Navbar />
         <Routes>
           <Route
-            path="/"
+            path="/React-Todo/"
             element={<TodoList delete={handleDelete} complete={handleCheck} />}
           />
           <Route
-            path="/today"
+            path="/React-Todo/today"
             element={<Today delelte={handleDelete} complete={handleCheck} />}
           />
           <Route
-            path="/month"
+            path="/React-Todo/month"
             element={<Month delete={handleDelete} complete={handleCheck} />}
           />
           <Route
-            path="/finish"
+            path="/React-Todo/finish"
             element={<Completed delete={handleDelete} complete={handleCheck} />}
           />
-          <Route path="/add" element={<AddTask />} />
-          <Route path="/details/:id" element={<Details />} />
-          <Route path="/edit-task/:id" element={<EditTask />} />
+          <Route path="/React-Todo/add" element={<AddTask />} />
+          <Route path="/React-Todo/details/:id" element={<Details />} />
+          <Route path="/React-Todo/edit-task/:id" element={<EditTask />} />
         </Routes>
       </Router>
     </>
