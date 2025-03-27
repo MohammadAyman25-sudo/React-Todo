@@ -1,10 +1,12 @@
-import { useState, useRef } from "react";
+import ModeContext from "./ModeContext";
 import DatePicker from "react-datepicker";
+import { useState, useRef, useContext } from "react";
 
 function AddTask() {
   let descRef = useRef();
   let titleRef = useRef();
   let [taskTitle, setTaskTitle] = useState("");
+  const [darkMode, _] = useContext(ModeContext);
   let [taskDeadline, setTaskDeadline] = useState('');
   let tasks = JSON.parse(localStorage.getItem("tasks"));
   let [taskDescription, setTaskDescription] = useState("");
@@ -64,11 +66,22 @@ function AddTask() {
     alert("Your Task Is Added Successfully!!!");
   };
   return (
-    <div>
-      <h1 className="text-center">Add Task</h1>
-      <form className="container">
+    <div className={darkMode ? "bg-dark h-100" : "h-100"}>
+      <h1
+        className={darkMode ? "text-center bg-dark text-light" : "text-center"}
+      >
+        Add Task
+      </h1>
+      <form className="container" data-bs-theme={darkMode ? "dark" : "light"}>
         <div className="task-title mb-3">
-          <label htmlFor="title" className="form-label d-flex gap-2">
+          <label
+            htmlFor="title"
+            className={
+              darkMode
+                ? "form-label d-flex gap-2 text-light"
+                : "form-label d-flex gap-2"
+            }
+          >
             Title:<span>*</span>
           </label>
           <input
@@ -83,7 +96,14 @@ function AddTask() {
           />
         </div>
         <div className="task-deadline mb-3">
-          <label htmlFor="deadline" className="form-label d-flex gap-2">
+          <label
+            htmlFor="deadline"
+            className={
+              darkMode
+                ? "form-label d-flex gap-2 text-light"
+                : "form-label d-flex gap-2"
+            }
+          >
             Deadline:<span>(optional)</span>
           </label>
           <DatePicker
@@ -98,7 +118,14 @@ function AddTask() {
           />
         </div>
         <div className="task-description mb-3">
-          <label htmlFor="describe" className="form-label d-flex gap-2">
+          <label
+            htmlFor="describe"
+            className={
+              darkMode
+                ? "form-label d-flex gap-2 text-light"
+                : "form-label d-flex gap-2"
+            }
+          >
             Description:<span>(optional)</span>
           </label>
           <textarea

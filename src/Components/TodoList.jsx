@@ -1,13 +1,15 @@
 import Task from './Task';
-import { useState } from 'react';
+import ModeContext   from './ModeContext';
+import { useState, useContext, useEffect } from 'react';
 
 function TodoList(props) {
+    const [darkMode, _] = useContext(ModeContext);
     const [myState, setMyState] = useState(false);
     let tasks = JSON.parse(localStorage.getItem('tasks'));
     let unfinished_tasks = tasks.filter((task)=>{return !task.completed;});
   return (
-    <>
-      <table className="table container">
+    <div className={darkMode?"bg-dark h-100":"h-100"}>
+      <table className={!darkMode ? "table container" : "table table-dark container"}>
         <thead>
           <tr>
             <th scope="col" className="border-end border-end-2"></th>
@@ -29,7 +31,7 @@ function TodoList(props) {
         <tbody>
           {unfinished_tasks.map((task) => {
             return (
-              <tr>
+              <tr className={!darkMode ? "light-mode" : "dark-mode"}>
                 <Task
                   taskID={task.id}
                   delete={props.delete}
@@ -46,7 +48,7 @@ function TodoList(props) {
           })}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
 

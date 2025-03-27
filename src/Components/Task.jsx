@@ -1,7 +1,9 @@
+import { useContext } from "react";
+import ModeContext from "./ModeContext";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 function Task(props) {
+  const [darkMode, _] = useContext(ModeContext);
   return (
     <>
       <td className="border-end border-end-2">
@@ -26,16 +28,26 @@ function Task(props) {
       </td>
       <td className="border-end border-end-2">{props.deadline}</td>
       <td>
-        <ul className="dropdown-menu" aria-labelledby="dropdown">
+        <ul
+          className={
+            darkMode
+              ? "dropdown-menu dropdown-menu-dark"
+              : "dropdown-menu dropdown-menu"
+          }
+          aria-labelledby="dropdown"
+        >
           <li className="dropdown-item">
-            <Link to={`/React-Todo/edit-task/${props.taskID}`}>
+            <Link
+              to={`/React-Todo/edit-task/${props.taskID}`}
+              className={darkMode ? "text-light" : ""}
+            >
               <i className="bi bi-pencil-square"></i> Edit
             </Link>
           </li>
           <li className="dropdown-item bg-danger">
             <Link
               href="#"
-              className="text-white"
+              className="text-light"
               data-text={props.taskID}
               onClick={(e) => {
                 props.delete(e);
@@ -47,7 +59,9 @@ function Task(props) {
           </li>
         </ul>
         <button
-          className="dropdown-toggle"
+          className={
+            darkMode ? "dropdown-toggle text-light" : "dropdown-toggle"
+          }
           id="dropdown"
           data-bs-toggle="dropdown"
         >

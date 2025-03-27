@@ -1,7 +1,9 @@
 import Task from './Task'
-import { useState } from 'react'
+import ModeContext from './ModeContext'
+import { useState, useContext } from 'react'
 
 function Today(props) {
+    const [darkMode, _] = useContext(ModeContext);
     const [myState, setMyState] = useState(false);
     let tasks = JSON.parse(localStorage.getItem("tasks"));
     let today_tasks = tasks.filter((task)=>{
@@ -9,8 +11,8 @@ function Today(props) {
         return diff <= 86400000 && !task.completed;
     });
   return (
-    <>
-      <table className="table container">
+    <div className={darkMode ? "bg-dark h-100" : "h-100"}>
+      <table className={darkMode ? "table table-dark container" : "table container"}>
         <thead>
           <tr>
             <th scope="col" className="border-end border-end-2"></th>
@@ -32,7 +34,7 @@ function Today(props) {
         <tbody>
           {today_tasks.map((task) => {
             return (
-              <tr>
+              <tr className={darkMode ? "dark-mode" : "light-mode"}>
                 <Task
                   taskID={task.id}
                   delete={props.delete}
@@ -49,7 +51,7 @@ function Today(props) {
           })}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
 

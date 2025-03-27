@@ -1,9 +1,11 @@
-import { useState } from "react";
+import ModeContext from "./ModeContext";
 import DatePicker from "react-datepicker";
+import { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 
 function EditTask() {
     const { id } = useParams();
+    const [darkMode, _] = useContext(ModeContext);
     let mem_idx = -1;
     let tasks = JSON.parse(localStorage.getItem("tasks"));
     let curr_task = tasks.filter((el, idx)=>{mem_idx = idx; return el.id == id});
@@ -51,11 +53,20 @@ function EditTask() {
     alert("Your Task Is Editted Successfully !!!");
   };
   return (
-    <div>
-      <h1 className="text-center">Edit Task</h1>
-      <form className="container">
+    <div className={darkMode ? "bg-dark h-100" : "h-100"}>
+      <h1 className={darkMode ? "text-center text-light" : "text-center"}>
+        Edit Task
+      </h1>
+      <form className="container" data-bs-theme={darkMode ? "dark" : "light"}>
         <div className="task-title mb-3">
-          <label htmlFor="title" className="form-label d-flex gap-2">
+          <label
+            htmlFor="title"
+            className={
+              darkMode
+                ? "form-label d-flex gap-2 text-light"
+                : "form-label d-flex gap-2"
+            }
+          >
             Title:<span>*</span>
           </label>
           <input
@@ -70,7 +81,14 @@ function EditTask() {
           />
         </div>
         <div className="task-deadline mb-3">
-          <label htmlFor="deadline" className="form-label d-flex gap-2">
+          <label
+            htmlFor="deadline"
+            className={
+              darkMode
+                ? "form-label d-flex gap-2 text-light"
+                : "form-label d-flex gap-2"
+            }
+          >
             Deadline:<span>(optional)</span>
           </label>
           <DatePicker
@@ -85,7 +103,14 @@ function EditTask() {
           />
         </div>
         <div className="task-description mb-3">
-          <label htmlFor="describe" className="form-label d-flex gap-2">
+          <label
+            htmlFor="describe"
+            className={
+              darkMode
+                ? "form-label d-flex gap-2 text-light"
+                : "form-label d-flex gap-2"
+            }
+          >
             Description:<span>(optional)</span>
           </label>
           <textarea
