@@ -17,7 +17,7 @@ function Task(props) {
         />
       </td>
       <td className="border-end border-end-2">
-        <Link to={`/details/${props.taskID}`} className="w-25">
+        <Link to={`/React-Todo/details/${props.taskID}`} className="w-25">
           {props.title}
         </Link>
       </td>
@@ -28,7 +28,7 @@ function Task(props) {
       <td>
         <ul className="dropdown-menu" aria-labelledby="dropdown">
           <li className="dropdown-item">
-            <Link to={`/edit-task/${props.taskID}`}>
+            <Link to={`/React-Todo/edit-task/${props.taskID}`}>
               <i className="bi bi-pencil-square"></i> Edit
             </Link>
           </li>
