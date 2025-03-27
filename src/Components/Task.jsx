@@ -4,22 +4,27 @@ import { useState } from "react";
 function Task(props) {
   return (
     <>
-      <td>
+      <td className="border-end border-end-2">
         <input
           className="form-check-input"
           type="checkbox"
           data-text={props.taskID}
           checked={props.completed}
-          onChange={(e)=>{props.complete(e); props.setParentState(!props.parentState)}}
+          onChange={(e) => {
+            props.complete(e);
+            props.setParentState(!props.parentState);
+          }}
         />
       </td>
-      <td>
+      <td className="border-end border-end-2">
         <Link to={`/details/${props.taskID}`} className="w-25">
           {props.title}
         </Link>
       </td>
-      <td>{props.created_at}</td>
-      <td>{props.deadline}</td>
+      <td className="d-lg-table-cell d-none border-end border-end-2">
+        {props.created_at}
+      </td>
+      <td className="border-end border-end-2">{props.deadline}</td>
       <td>
         <ul className="dropdown-menu" aria-labelledby="dropdown">
           <li className="dropdown-item">
@@ -32,9 +37,12 @@ function Task(props) {
               href="#"
               className="text-white"
               data-text={props.taskID}
-              onClick={(e)=>{props.delete(e); props.setParentState(!props.parentState);}}
+              onClick={(e) => {
+                props.delete(e);
+                props.setParentState(!props.parentState);
+              }}
             >
-            <i className="bi bi-trash"></i> Delete
+              <i className="bi bi-trash"></i> Delete
             </Link>
           </li>
         </ul>
