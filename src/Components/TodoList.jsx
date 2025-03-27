@@ -7,7 +7,7 @@ function TodoList(props) {
     let unfinished_tasks = tasks.filter((task)=>{return !task.completed;});
   return (
     <>
-      <table className="table container">
+      <table className="table container overflow-scroll">
         <thead>
           <tr>
             <th scope="col" className="border-end border-end-2"></th>

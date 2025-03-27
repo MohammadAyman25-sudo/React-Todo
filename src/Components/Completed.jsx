@@ -9,13 +9,19 @@ function Completed(props) {
   });
   return (
     <>
-      <table className="table container">
+      <table className="table container overflow-scroll">
         <thead>
           <tr>
-            <th scope="col"></th>
-            <th scope="col">Title</th>
-            <th scope="col">Created At</th>
-            <th scope="col">Deadline</th>
+            <th scope="col" className="border-end border-end-2"></th>
+            <th scope="col" className="border-end border-end-2">
+              Title
+            </th>
+            <th scope="col" className="border-end border-end-2">
+              Created At
+            </th>
+            <th scope="col" className="border-end border-end-2">
+              Deadline
+            </th>
             <th scope="col"></th>
           </tr>
         </thead>
