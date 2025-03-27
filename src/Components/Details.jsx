@@ -7,9 +7,22 @@ function Details() {
     return (
     <div className="container">
         <h2 className="text-center text-capitalize">{task[0].title}</h2>
-        <p>Created At: {task[0].str_created_at}</p>
-        <p>Deadline: {task[0].str_deadline}</p>
-        <p>Description: {task[0].description}</p>
+        <table className="table">
+          <tbody>
+            <tr>
+              <th scope="row">Created At</th>
+              <td>{task[0].str_created_at}</td>
+            </tr>
+            <tr>
+              <th scope="row">Deadline</th>
+              <td>{task[0].str_deadline}</td>
+            </tr>
+            <tr>
+              <th scope="row">Description</th>
+              <td>{task[0].description}</td>
+            </tr>
+          </tbody>
+        </table>
     </div>
   )
 }
